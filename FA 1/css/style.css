@@ -1,0 +1,766 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-family: "Poppins", sans-serif;
+}
+
+:root {
+    --bg-color: #1f242d; 
+    --second-bg-color: #323946; 
+    --main-color:#e78310; 
+    --white-color:#fff; 
+    --disabled-color:#fff3; 
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    color: var(--white-color)
+}
+
+header{
+    position: fixed;
+    top: 0;
+    left:0; 
+    width: 100%;
+    padding: 2rem 9%;
+    background: var(--bg-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo{
+    font-size: 3rem;
+    color: var(--white-color);
+    font-weight: 700;
+}
+
+nav {
+    margin-top: 2rem; 
+  }
+nav a {
+    font-size: 2rem;
+    color: var(--white-color);
+    font-weight: 500;
+    margin-left: 3.5rem;
+    transition: .5s;
+}
+
+nav a:hover,
+nav a.active{
+    color: var(--main-color);
+}
+
+#menu-icon {
+    font-size: 4rem;
+    display: none;
+}
+
+section {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 10rem 9% 2rem;
+  background:var(--bg-color);
+  visibility: hidden;
+  opacity: 0;
+  overflow: hidden;
+}
+section.active {
+    visibility: visible;
+    opacity: 1;
+    overflow: auto;
+}
+
+/*START OF HOME PAGE*/
+.Home {
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+
+}
+
+.home-detail h1 {
+    font-size: clamp(3.5rem, 10vw, 5.5rem);
+}
+
+.home-detail h2 {
+    display: inline-block;
+    font-size: 3.2rem;
+    margin-top: -1rem;
+}
+
+.home-detail h2 span {
+    position: relative;
+    display: inline-block;
+    color: transparent;
+    -webkit-text-stroke: .07rem var(--main-color);
+    animation: display-text 16s linear infinite;
+    animation-delay: calc(-4s *var(--i));
+}
+
+@keyframes display-text {
+    25%, 100% {
+        display: none;
+    }
+}
+
+.home-detail h2 span::before {
+    content: attr(data-text);
+    position: absolute;
+    width: 0;
+    border-right: .2rem solid var(--main-color);
+    color: var(--main-color);
+    white-space: nowrap;
+    overflow: hidden;
+    animation: fill-text 4s linear infinite;
+}
+
+@keyframes fill-text {
+    10%,
+    100%{
+        width: 0;
+    }
+    70%,
+    90% {
+        width: 100%;
+    }
+}
+.home-detail p {
+    font-size: 1.6rem;
+    margin: 1rem 0 2.5rem;
+}
+
+.home-detail .btn-sci {
+    display: flex;
+    align-items: center;
+}
+
+.btn { 
+    display: inline-block;
+    padding: 1rem 3rem;
+    background: var(--main-color);
+    border: .2rem solid var(--main-color);
+    border-radius: 4rem;
+    box-shadow: 0 0 1rem var(--main-color);
+    font-size: 1.6rem;
+    color: var(--bg-color);
+    font-weight: 500;
+    transition: 0.5s;
+}
+
+.btn:hover {
+    background: transparent;
+    color: var(--main-color);
+    box-shadow: none;
+}
+
+.home-detail .btn-sci .sci{
+    margin-left: 2rem;
+}
+.home-detail .btn-sci .sci a {
+    display: inline-flex;
+    padding: .8rem;
+    border: .2rem solid var(--main-color);
+    border-radius: 50%;
+    font-size: 2rem;
+    color: var(--main-color);
+    margin: 0 .8rem;
+    transition: .5s;
+}
+.home-detail .btn-sci .sci a:hover {
+    background: var(--main-color);
+    color: var(--bg-color);
+    box-shadow: 0 0 1rem var(--main-color);
+
+}
+
+.home-img .img-box {
+    position: relative;
+    width: 32vw;
+    height: 32vw;
+    border-radius: 50%;
+    padding: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.home-img .img-box::before,
+.home-img .img-box::after {
+    content:'';
+    position: absolute;
+    width: 50rem;
+    height: 50rem;
+    background: conic-gradient(transparent, transparent, transparent, var(--main-color));
+    transform: rotate(0deg);
+    animation: rotate-border 10s linear infinite;
+}
+
+.home-img .img-box::after{
+    animation-delay: -5s;
+}
+
+@keyframes rotate-border {
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+.home-img .img-box .img-item {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-color);
+    border-radius: 50%;
+    border: .01rem solid var(--bg-color);
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.home-img .img-box .img-item img {
+    position: absolute;
+    top: 3rem;
+    display: block;
+    width: 85%;
+    object-fit: cover;
+    mix-blend-mode: lighten;
+}
+
+.footer {
+    background: var(--bg-color);
+    color: var(--white-color);
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 1.4rem;
+    font-weight: 400;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+/*End of Home page*/
+
+/*START OF ABOUT ME*/
+.about-me {
+    background: var(--bg-color); 
+    color: var(--white-color); 
+    padding: 6rem 9%;
+    text-align: center;
+    padding-top: 10rem;
+}
+
+.about-me .heading {
+    font-size: 4.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.about-me .heading span {
+    color: var(--main-color);
+}
+
+.about-me .heading2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.about-me .heading2 span {
+    color: var(--main-color);
+}
+
+.about-me .about-box {
+    padding: 3rem 2.5rem;
+    background: var(--second-bg-color);
+    border: .2rem solid var(--second-bg-color);
+    border-radius: 1rem;
+    transition: box-shadow 0.3s ease;
+}
+
+.about-me .about-container .about-box:hover {
+    box-shadow: 0 0 10px var(--main-color);
+}
+
+.about-me .about-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 2rem;
+}
+
+.about-me li {
+    font-size: 1.5rem;
+}
+
+.about-me p {
+    font-size: 1.6rem;
+}
+
+.work-img {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 10px;
+    padding: 0.5rem;
+    margin: 2rem auto 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: var(--bg-color); 
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .work-img img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .work-img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 25px var(--main-color); 
+  }
+  
+  .work-img:hover img {
+    transform: scale(1.05);
+  }
+
+/*End of about me page*/
+
+/*EDUCATION PAGE*/
+
+.education-section {
+    padding: 3rem 2rem;
+    background-color: var(--second-bg-color);
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .education-section .heading2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .education-detail h1 span{
+    
+    color: var(--main-color);
+}
+
+.education-detail h1 {
+
+    text-align: center;
+    font-size: 4.5rem;
+    margin-bottom: 2rem;
+}
+
+.education-detail p {
+    font-size: 1.6rem;            
+    margin-bottom: 2.5rem;    
+    
+}
+  
+  .education-section .heading2 span {
+    color: var(--main-color);
+  }
+  
+  .education-table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.6rem;
+    background-color: var(---bg-color);
+    color: #ffffff;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .education-table th, .education-table td {
+    padding: 1.2rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .education-table th {
+    background-color: var(--main-color);
+    color: #fff;
+  }
+  
+  .education-table tr:hover {
+    background-color: rgba(0, 123, 255, 0.05);
+  }  
+
+  /* WORK AND EDUCATION PAGE*/
+  .work-experience-section {
+    padding: 3rem 2rem;
+    background-color: var(--second-bg-color);
+    border-radius: 1rem;
+    margin-top: 3rem;
+    color: var(--white-color);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .work-experience-section .heading2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .work-experience-section .heading2 span {
+    color: var(--main-color);
+  }
+  
+  .timeline {
+    list-style: none;
+    position: relative;
+    padding-left: 2rem;
+    margin: 0;
+  }
+  
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 1rem;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--main-color);
+    border-radius: 2px;
+  }
+  
+  .timeline li {
+    position: relative;
+    margin-bottom: 2.5rem;
+    padding-left: 2rem;
+  }
+  
+  .timeline li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 15px;
+    height: 15px;
+    background: var(--main-color);
+    border-radius: 50%;
+    border: 3px solid var(--bg-color);
+    box-shadow: 0 0 8px var(--main-color);
+  }
+  
+  .timeline-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.2rem;
+  }
+  
+  .timeline-content .date {
+    font-size: 1.4rem;
+    color: var(--disabled-color);
+    margin-bottom: 0.5rem;
+    display: block;
+    font-style: italic;
+  }
+  
+  .timeline-content p {
+    font-size: 1.6rem;
+    line-height: 1.4;
+    color: var(--white-color);
+  }
+  
+  /* Done with education page */
+
+   /*PORTFOLIO PAGE*/
+
+   .portfolio .heading {
+    font-size: 4.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .portfolio .heading span {
+    color: var(--main-color);
+  }
+  
+  .portfolio-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    padding: 2rem 9%;
+  }
+  
+  .portfolio-box {
+    background-color: var(--second-bg-color);
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .portfolio-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px var(--main-color);
+  }
+  
+  .portfolio-box .numb {
+    font-size: 6rem;
+    -webkit-text-stroke: 0.07rem var(--white-color);
+    color: transparent;
+    margin-bottom: 1rem;
+  }
+  
+  .portfolio-img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .project-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--main-color);
+  }
+  
+  .project-description {
+    font-size: 1.4rem;
+    color: var(--white-color);
+  }
+  
+  .portfolio-link {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.8rem 2rem;
+    background-color: var(--main-color);
+    color: var(--bg-color);
+    font-size: 1.4rem;
+    font-weight: 500;
+    border-radius: 2rem;
+    transition: 0.3s;
+    text-decoration: none;
+    box-shadow: 0 0 0.5rem var(--main-color);
+  }
+  
+  .portfolio-link:hover {
+    background: transparent;
+    color: var(--main-color);
+    border: 1px solid var(--main-color);
+    box-shadow: none;
+  }
+
+  /*Done with portfolio page*/
+
+  /*Contact page styling*/
+  
+  .contact {
+    padding: 10rem 9% 5rem;
+    background: var(--bg-color);
+    color: var(--white-color);
+    text-align: center;
+  }
+  
+  .contact .heading {
+    font-size: 4.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .contact .heading span {
+    color: var(--main-color);
+  }
+  
+  .contact-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+  }
+  
+  .contact-form {
+    background: var(--second-bg-color);
+    padding: 3rem;
+    border-radius: 1rem;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 0 1rem var(--main-color);
+  }
+  
+  .contact-form .input-box {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.5rem;
+    border-radius: 0.5rem;
+    background: var(--bg-color);
+    color: var(--white-color);
+    border: 1px solid var(--main-color);
+  }
+  
+  .contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+  
+  .contact-form .btn {
+    margin-top: 1.5rem;
+    cursor: pointer;
+  }
+  
+
+.contact {
+    padding: 10rem 9% 5rem;
+    background: var(--bg-color);
+    color: var(--white-color);
+  }
+  
+  .contact .heading {
+    font-size: 4.5rem;
+    margin-bottom: 4rem;
+    text-align: center;
+  }
+  
+  .contact .heading span {
+    color: var(--main-color);
+  }
+  
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 4rem;
+    align-items: flex-start;
+  }
+  
+  .contact-info {
+    text-align: left;
+  }
+  
+  .contact-info .motivation {
+    font-size: 1.7rem;
+    margin-bottom: 3rem;
+    line-height: 1.6;
+  }
+  
+  .contact-info .info-item {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--white-color);
+  }
+  
+  .contact-info .info-item i {
+    color: var(--main-color);
+    font-size: 2rem;
+  }
+  
+  
+  .contact-form {
+    background: var(--second-bg-color);
+    padding: 3rem;
+    border-radius: 1rem;
+    width: 100%;
+    box-shadow: 0 0 1rem var(--main-color);
+  }
+  
+  .contact-form .input-box {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.5rem;
+    border-radius: 0.5rem;
+    background: var(--bg-color);
+    color: var(--white-color);
+    border: 1px solid var(--main-color);
+  }
+  
+  .contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+  
+  .contact-form .btn {
+    margin-top: 1.5rem;
+    cursor: pointer;
+  }
+
+  @media screen and (max-width: 1200px) {
+    html {
+        font-size: 55%;
+    }
+  }
+
+  @media screen and (max-width: 993px) {
+    header {
+        padding: 2rem 4%;
+    }
+    section {
+        padding: 10rem 4% 2rem;
+    }
+  }
+
+  @media screen and (max-width: 810px){
+    .contact-box .contact-form: 1fr;
+  }
+
+  @media screen and (max-width: 768px) {
+    #menu-icon {
+        display: block;
+    }
+
+    nav {
+        position: absolute;
+        top: 100%;
+        left: 0%;
+        width: 100%;
+        padding: 1rem 0;
+        background: var(--bg-color);
+        border-top: .1rem solid rgba(0, 0, 0, .2);
+        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
+        text-align: center;
+        display: none;
+        flex-direction: column;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    nav a {
+        display: block;
+        margin: 4rem 0;
+    }
+  }
+  
